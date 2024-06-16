@@ -17,7 +17,7 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     return (
-        <Link href="##">
+        <Link href={``}>
             <div className="flex flex-col w-64 rounded-lg shadow-md p-2">
                 <div className="relative w-48 h-48 mb-4">
                     <Image
