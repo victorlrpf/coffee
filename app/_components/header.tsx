@@ -2,12 +2,16 @@ import { BoltIcon, HomeIcon, MenuIcon, MicIcon, PersonStandingIcon, SearchIcon, 
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 
 const HeaderPrincipal = () => {
     return ( 
-        <span className="flex gap-20 justify-evenly">
-            <h2 className=" text-xl">THE COFFE</h2>
+        <span className="flex gap-20 justify-evenly ">
+            <Link href='/'>
+                <h2 className=" text-xl">THE COFFE</h2>
+            </Link>
+            
             <span >
                 <Button variant='ghost' size='sm'>
                 <SearchIcon />
