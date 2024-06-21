@@ -29,10 +29,10 @@ export default function Home() {
             <Link href="/restaurants/recommended">
               Ver todos
               <ChevronRightIcon size={16} />
-            </Link>          
+            </Link>
           </Button>
         </div>
-        <ProductList />
+        <ProductList category="coffee" />
       </div>
       
       <div className="pt-6">
@@ -46,10 +46,10 @@ export default function Home() {
             <Link href="/restaurants/recommended">
               Ver todos
               <ChevronRightIcon size={16} />
-            </Link>          
+            </Link>
           </Button>
       </div>
-        <ProductList />
+        <ProductList category="salgados" />
       </div>
       
       <div className="pt-6">
@@ -63,10 +63,10 @@ export default function Home() {
               <Link href="/restaurants/recommended">
                 Ver todos
                 <ChevronRightIcon size={16} />
-              </Link>          
+              </Link>
             </Button>
         </div>
-        <ProductList />
+        <ProductList category="doces" />
       </div>
       
     </main>
