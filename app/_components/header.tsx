@@ -93,7 +93,7 @@ const HeaderPrincipal = () => {
                     >
                         <BoltIcon size={16}/>
                         <Link href={'/configuracao'}>
-                            <span className="block">Configurações</span>
+                            <span className="block">Mais informações</span>
                         </Link>
                     </Button>
 
