@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import ProductItem from './product-item';
+import { useRouter } from 'next/router';
+import ProductImage from './components/product-image'; // Ajuste o caminho conforme necessário
 
 interface Product {
     id: number;
@@ -11,23 +12,24 @@ interface Product {
     imgUrl: string;
 }
 
-interface ProductListProps {
-    category: string;
-}
-
-const ProductList: React.FC<ProductListProps> = ({ category }) => {
-    const [products, setProducts] = useState<Product[]>([]);
+const ProductPage: React.FC = () => {
+    const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const router = useRouter();
+    const { id } = router.query;
 
     useEffect(() => {
+        if (!id) return;
+
         const fetchData = async () => {
             try {
                 const response = await fetch('https://raw.githubusercontent.com/victorlrpf/coffee-api/main/db.json');
                 if (!response.ok) {
                     throw new Error(`Erro ao acessar a URL: ${response.statusText}`);
                 }
-                const data = await response.json();
-                setProducts(data[category] || []); // Garantir que products será um array
+                const data: Product[] = await response.json();
+                const foundProduct = data.find(p => p.id === Number(id));
+                setProduct(foundProduct || null);
                 setLoading(false);
             } catch (error) {
                 console.error('Erro:', error);
@@ -36,23 +38,24 @@ const ProductList: React.FC<ProductListProps> = ({ category }) => {
         };
 
         fetchData();
-    }, [category]);
+    }, [id]);
 
     if (loading) {
         return <div>Carregando...</div>;
     }
 
-    if (!Array.isArray(products)) {
-        return <div>Erro ao carregar produtos.</div>;
+    if (!product) {
+        return <div>Produto não encontrado.</div>;
     }
 
     return (
-        <div className='flex gap-4 overflow-x-scroll px-5 [&::-webkit-scrollbar]:hidden'>
-            {products.map((product) => (
-                <ProductItem key={product.id} product={product} />
-            ))}
+        <div>
+            <ProductImage product={product} />
+            <h1>{product.name}</h1>
+            <p>{product.desc}</p>
+            <p>R${product.price.toFixed(2)}</p>
         </div>
     );
 };
 
-export default ProductList;
+export default ProductPage;

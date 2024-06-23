@@ -5,6 +5,7 @@ import React from 'react';
 import Link from "next/link";
 
 interface Product {
+    id: number;
     name: string;
     price: number;
     desc: string;
@@ -17,7 +18,7 @@ interface ProductItemProps {
 
 const ProductItem: React.FC<ProductItemProps> = ({ product }) => {
     return (
-        <Link href={``}>
+        <Link href={`/productItens/${product.id}`}>
             <div className="flex flex-col w-64 rounded-lg shadow-md p-2">
                 <div className="relative w-48 h-48 mb-4">
                     <Image
