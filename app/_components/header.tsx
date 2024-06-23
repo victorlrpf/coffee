@@ -10,7 +10,7 @@ import { AlertDialogContent } from "@radix-ui/react-alert-dialog";
 const HeaderPrincipal = () => {
     return ( 
         <span className="flex gap-20 justify-evenly ">
-            <Link href='/'>
+            <Link href=''>
                 <h2 className=" text-xl">THE COFFE</h2>
             </Link>
             
@@ -47,7 +47,9 @@ const HeaderPrincipal = () => {
                         className="w-full justify-start space-x-3 rounded-full text-sm font-normal"
                     >
                         <HomeIcon size={16} />
-                        <span className="block">Início</span>
+                        <Link href="/">
+                            <span className="block">Início</span>
+                        </Link>
                     </Button>
                     
                     <Button
