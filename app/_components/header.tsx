@@ -3,6 +3,8 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "./ui/alert-dialog";
+import { AlertDialogContent } from "@radix-ui/react-alert-dialog";
 
 
 const HeaderPrincipal = () => {
@@ -61,7 +63,21 @@ const HeaderPrincipal = () => {
                         className="w-full justify-start space-x-3 rounded-full text-sm font-normal"
                     >
                         <MicIcon size={16} />
-                        <span className="block">Chamar atendente</span>
+                        <AlertDialog>
+                            <AlertDialogTrigger>Chamar Atendente</AlertDialogTrigger>
+                            <AlertDialogContent className=" absolute left-0 right-3 top-[22rem]">
+                                <AlertDialogHeader>
+                                    <AlertDialogTitle>O Atendente foi chamado</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        O atendente foi chamado e logo estará com você.
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel>Foi engano (Cencelar) </AlertDialogCancel>
+                                    <AlertDialogAction>Muito Obrigado</AlertDialogAction>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
                     </Button>
 
                     </div>
@@ -74,7 +90,9 @@ const HeaderPrincipal = () => {
                         className="w-full justify-start space-x-3 rounded-full text-sm font-normal"
                     >
                         <BoltIcon size={16}/>
-                        <span className="block">Configurações</span>
+                        <Link href={'/configuracao'}>
+                            <span className="block">Configurações</span>
+                        </Link>
                     </Button>
 
                 </SheetContent>
